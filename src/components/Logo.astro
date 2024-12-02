@@ -1,0 +1,15 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+<div class={`flex items-center ${className}`}>
+  <img 
+    src="/logo.svg" 
+    alt="Grocery Share Logo" 
+    class="h-10 w-10 mr-2"
+  />
+  <span class="font-bold text-xl">Grocery Share</span>
+</div>

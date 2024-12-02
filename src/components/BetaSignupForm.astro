@@ -1,0 +1,71 @@
+---
+---
+<form id="betaSignupForm" class="max-w-md mx-auto">
+  <div class="flex flex-col gap-4">
+    <div class="relative">
+      <input 
+        type="email" 
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-green-500"
+      />
+      <span id="emailError" class="hidden text-red-500 text-sm mt-1 absolute -bottom-6 left-0"></span>
+    </div>
+    <button 
+      type="submit"
+      class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Request Access
+    </button>
+  </div>
+  <div id="successMessage" class="hidden mt-4 text-green-600 font-medium">
+    Thanks for joining! Check your email for next steps.
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('betaSignupForm') as HTMLFormElement;
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  const emailError = document.getElementById('emailError');
+  const successMessage = document.getElementById('successMessage');
+  const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Reset states
+    emailError.classList.add('hidden');
+    submitButton.disabled = true;
+    
+    const email = emailInput.value;
+    
+    try {
+      const response = await fetch('/api/beta-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Signup failed');
+      }
+      
+      // Show success message
+      form.reset();
+      successMessage.classList.remove('hidden');
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+      }, 5000);
+      
+    } catch (error) {
+      emailError.textContent = 'Something went wrong. Please try again.';
+      emailError.classList.remove('hidden');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>

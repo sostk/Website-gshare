@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Screenshots from '../components/Screenshots.astro';
+import HowToGuide from '../components/HowToGuide.astro';
+import BetaSignup from '../components/BetaSignup.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<Layout title="Grocery Share - Collaborative Grocery Lists for Roommates">
+  <main>
+    <Hero />
+    <Features />
+    <Screenshots />
+    <HowToGuide />
+    <BetaSignup />
+    <FAQ />
+  </main>
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+  }
+</style>

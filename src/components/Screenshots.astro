@@ -1,0 +1,39 @@
+---
+const screenshots = [
+  {
+    title: "Shopping List View",
+    description: "Collaborative shopping lists with real-time updates",
+    image: "/screenshots/list-view.png"
+  },
+  {
+    title: "Expense Tracking",
+    description: "Easy expense splitting and payment tracking",
+    image: "/screenshots/expenses.png"
+  },
+  {
+    title: "Household Management",
+    description: "Manage household members and settings",
+    image: "/screenshots/household.png"
+  }
+];
+---
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">App Screenshots</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {screenshots.map(screenshot => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src={screenshot.image} 
+            alt={screenshot.title}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2">{screenshot.title}</h3>
+            <p class="text-gray-600">{screenshot.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

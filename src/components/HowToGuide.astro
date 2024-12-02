@@ -1,0 +1,37 @@
+---
+const steps = [
+  {
+    step: 1,
+    title: "Create an Account",
+    description: "Sign up with your email or connect with Google"
+  },
+  {
+    step: 2,
+    title: "Create or Join a Household",
+    description: "Start a new household or join an existing one with your roommates"
+  },
+  {
+    step: 3,
+    title: "Start Shopping",
+    description: "Create lists, add items, and track expenses together"
+  }
+];
+---
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+    <div class="max-w-3xl mx-auto">
+      {steps.map(step => (
+        <div class="flex items-start mb-8">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+            {step.step}
+          </div>
+          <div class="ml-4">
+            <h3 class="text-xl font-semibold mb-2">{step.title}</h3>
+            <p class="text-gray-600">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
